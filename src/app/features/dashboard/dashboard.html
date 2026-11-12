@@ -1,0 +1,215 @@
+
+<div class="dashboard-layout">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">✓</div>
+      <span>TaskFlow</span>
+    </div>
+
+    <p class="menu-label">WORKSPACE</p>
+
+    <a routerLink="/" class="menu-item active">
+  <span>▦</span> Overview
+</a>
+
+<a href="#my-tasks" class="menu-item">
+  <span>☷</span> My Tasks
+</a>
+
+    <div class="sidebar-bottom">
+      <div class="profile-avatar">U</div>
+      <div>
+        <strong>Workspace User</strong>
+        <small>Personal workspace</small>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="topbar">
+      <div>
+        <span class="breadcrumb">Workspace / Overview</span>
+      </div>
+
+      <a routerLink="/about" class="about-link">About Project ↗</a>
+    </header>
+
+    <section class="page-heading">
+      <div>
+        <span class="eyebrow">YOUR WORKSPACE</span>
+        <h1>Dashboard Overview</h1>
+        <p>Stay organised. Stay productive. Get things done.</p>
+      </div>
+
+      <div class="date-label">My Task Manager</div>
+    </section>
+
+    <section class="stats-grid">
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span>Total Tasks</span>
+          <span class="stat-icon purple">☷</span>
+        </div>
+        <h2>{{ tasks.length }}</h2>
+        <p>Tasks in your workspace</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span>Completed</span>
+          <span class="stat-icon green">✓</span>
+        </div>
+        <h2>{{ completedCount }}</h2>
+        <p>Successfully completed</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span>Pending</span>
+          <span class="stat-icon orange">◷</span>
+        </div>
+        <h2>{{ pendingCount }}</h2>
+        <p>Still need your attention</p>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-top">
+          <span>Completion Rate</span>
+          <span class="stat-icon blue">↗</span>
+        </div>
+        <h2>{{ progress }}%</h2>
+        <p>Overall task progress</p>
+      </div>
+
+    </section>
+
+    <section class="content-grid">
+
+      <div class="tasks-panel" id="my-tasks">
+
+        <div class="panel-heading">
+          <div>
+            <h2>My Tasks</h2>
+            <p>Manage and track your daily activities</p>
+          </div>
+          <span class="task-count">{{ tasks.length }} Tasks</span>
+        </div>
+
+        <div class="add-task-box">
+          <input
+            #taskInput
+            type="text"
+            placeholder="What needs to be done?"
+            (keyup.enter)="addTask(taskInput.value); taskInput.value = ''"
+          />
+
+          <button
+            class="add-button"
+            (click)="addTask(taskInput.value); taskInput.value = ''"
+          >
+            + Add Task
+          </button>
+        </div>
+
+        <div class="task-list">
+
+          @if (tasks.length > 0) {
+
+            @for (task of tasks; track task.id) {
+
+              <div class="task-row">
+
+                <div class="task-indicator"
+                     [class.done-indicator]="task.completed">
+                </div>
+
+                <div class="task-information">
+                  <h3 [class.completed-title]="task.completed">
+                    {{ task.title }}
+                  </h3>
+                  <p>{{ task.description }}</p>
+                </div>
+
+                <span
+                  class="status-badge"
+                  [class.status-done]="task.completed"
+                  [class.status-pending]="!task.completed"
+                >
+                  {{ task.completed ? 'Completed' : 'In Progress' }}
+                </span>
+
+                <button
+                  class="complete-button"
+                  (click)="toggleTask(task.id)"
+                  [disabled]="task.completed"
+                >
+                  {{ task.completed ? '✓' : 'Complete' }}
+                </button>
+
+              </div>
+
+            }
+
+          } @else {
+
+            <div class="empty-state">
+              <h3>No tasks yet</h3>
+              <p>Add your first task to get started.</p>
+            </div>
+
+          }
+
+        </div>
+
+      </div>
+
+      <aside class="progress-panel">
+
+        <div class="panel-heading">
+          <div>
+            <h2>Productivity</h2>
+            <p>Your overall progress</p>
+          </div>
+        </div>
+
+        <div class="progress-circle"
+             [style.--progress]="progress + '%'">
+          <div class="circle-inner">
+            <strong>{{ progress }}%</strong>
+            <span>Completed</span>
+          </div>
+        </div>
+
+        <p class="progress-message">
+          {{ completedCount }} out of {{ tasks.length }} tasks completed.
+        </p>
+
+        <div class="progress-bar">
+          <div [style.width]="progress + '%'"></div>
+        </div>
+
+        <div class="progress-details">
+          <span>Completed</span>
+          <strong>{{ completedCount }}</strong>
+        </div>
+
+        <div class="progress-details">
+          <span>Remaining</span>
+          <strong>{{ pendingCount }}</strong>
+        </div>
+
+        <div class="tip-box">
+          <strong>Stay focused!</strong>
+          <p>Small steps every day lead to big achievements.</p>
+        </div>
+
+      </aside>
+
+    </section>
+
+  </main>
+
+</div>

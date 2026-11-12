@@ -1,59 +1,147 @@
-# AngularFundamentalsAssessment
+# Task Manager – Angular Fundamentals Assessment
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.29.
+A modern, responsive Task Management application built using Angular 21. The application allows users to organise daily activities, manage tasks, track completion status and monitor overall productivity.
 
-## Development server
+## Project Overview
 
-To start a local development server, run:
+Task Manager is a single-page web application developed to demonstrate fundamental Angular concepts, including standalone components, component-based architecture, services, dependency injection, routing and modern Angular control flow.
+
+The application provides an intuitive dashboard with task statistics and a productivity progress indicator.
+
+## Features
+
+- **Task Management:** Add and view tasks.
+- **Task Completion:** Mark tasks as completed.
+- **Progress Tracking:** Monitor completed and pending tasks.
+- **Dashboard:** View total tasks, completed tasks, pending tasks and completion percentage.
+- **Navigation:** Navigate between Dashboard and About pages.
+- **Responsive Design:** Interface adapts to different screen sizes.
+
+## Technologies Used
+
+- Angular 21
+- TypeScript
+- HTML5
+- SCSS
+- Node.js
+- Angular CLI
+
+## Project Structure
+
+```text
+src/
+└── app/
+    ├── core/
+    │   └── services/
+    │       └── task.ts
+    ├── features/
+    │   ├── dashboard/
+    │   │   ├── dashboard.ts
+    │   │   ├── dashboard.html
+    │   │   └── dashboard.scss
+    │   └── about/
+    │       ├── about.ts
+    │       ├── about.html
+    │       └── about.scss
+    ├── models/
+    ├── app.config.ts
+    ├── app.routes.ts
+    ├── app.ts
+    └── app.html
+```
+
+## Angular Concepts Demonstrated
+
+**1. Standalone Components**
+
+The application uses standalone Angular components to organise the interface into independent and reusable sections.
+
+**2. Services and Dependency Injection**
+
+A task service manages task-related operations and is injected into the dashboard component using Angular dependency injection.
+
+**3. Angular Routing**
+
+Angular Router enables navigation between the Dashboard and About pages without reloading the entire application.
+
+**4. Modern Control Flow**
+
+Angular's built-in control-flow syntax, including `@for` and conditional rendering, is used to display task information dynamically.
+
+**5. Component-Based Architecture**
+
+The application separates its functionality into feature components, services and models to maintain a structured codebase.
+
+## Installation and Setup
+
+### Prerequisites
+
+Make sure the following are installed:
+
+- Node.js
+- npm
+- Angular CLI
+
+### Step 1: Clone the repository
+
+```bash
+git clone YOUR_GITHUB_REPOSITORY_URL
+```
+
+### Step 2: Navigate to the project directory
+
+```bash
+cd angular-fundamentals-assessment
+```
+
+### Step 3: Install dependencies
+
+```bash
+npm install
+```
+
+### Step 4: Start the development server
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open your browser and navigate to:
 
-## Code scaffolding
+http://localhost:4200/
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+The application will automatically reload when source files are modified.
 
-```bash
-ng generate component component-name
-```
+## Production Build
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+To generate a production build, run:
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The compiled application will be available in the `dist/` directory.
 
-## Running unit tests
+## Screenshots
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### 1. Successful Production Build
 
-```bash
-ng test
-```
+![Successful Angular Build](screenshots/build-success.png)
 
-## Running end-to-end tests
+### 2. Task Manager Dashboard and Control Flow
 
-For end-to-end (e2e) testing, run:
+![Task Manager Dashboard](screenshots/dashboard-overview.png)
 
-```bash
-ng e2e
-```
+![Task List and Progress Tracking](screenshots/control-flow.png)
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### 3. About Page – Second Route
 
-## Additional Resources
+![About Page](screenshots/second-route.png)
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Author
+
+Angular Fundamentals Assessment Project
+
+---
+
+Developed as part of an Angular fundamentals assessment.
