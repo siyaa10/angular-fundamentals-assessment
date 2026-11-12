@@ -85,7 +85,7 @@ Make sure the following are installed:
 ### Step 1: Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone https://github.com/siyaa10/angular-fundamentals-assessment.git
 ```
 
 ### Step 2: Navigate to the project directory
